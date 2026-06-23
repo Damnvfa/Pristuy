@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Profil Cantik ✨</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+    --pink-light: #FFD6E7;
+    --pink-mid: #FFB3D1;
+    --pink-main: #FF85B3;
+    --pink-dark: #E0568A;
+    --pink-deep: #B5326A;
+    --cream: #FFF5F9;
+    --gold: #FFD700;
+    --lilac: #D8B4FE;
+    --mint: #A8EDCE;
+}
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(135deg, #FFD6E7 0%, #FFF0F7 40%, #FFD6E7 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Floating hearts background */
+  .hearts-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  .heart-float {
+    position: absolute;
+    font-size: 18px;
+    opacity: 0;
+    animation: floatUp linear infinite;
+  }
+  @keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.5) rotate(-15deg); opacity: 0; }
+    10% { opacity: 0.4; }
+    90% { opacity: 0.2; }
+    100% { transform: translateY(-10vh) scale(1) rotate(15deg); opacity: 0; }
+  }
+
+  /* Stars sparkle */
+  .sparkle {
+    position: absolute;
+    pointer-events: none;
+    animation: sparkleAnim 1.5s ease-in-out infinite;
+  }
+  @keyframes sparkleAnim {
+    0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1) rotate(180deg); opacity: 1; }
+  }
+
+  /* Main container */
+  .page {
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px 60px;
+  }
+
+  /* Header card */
+  .profile-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 32px;
+    border: 3px solid var(--pink-mid);
+    padding: 36px 30px 30px;
+    box-shadow: 0 8px 40px rgba(255, 133, 179, 0.25);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    animation: slideDown 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  @keyframes slideDown {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .profile-card::before {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 120px; height: 120px;
+    background: radial-gradient(circle, var(--pink-light) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  /* Confetti decorations */
+  .confetti-top {
+    position: absolute;
+    top: 12px; left: 0; right: 0;
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    padding: 0 20px;
+  }
+
+  /* Avatar photo */
+  .avatar-wrap {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .avatar-ring {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink-main), var(--lilac), var(--pink-main));
+    padding: 4px;
+    animation: spinRing 4s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spinRing {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  .avatar-inner {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--cream);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .avatar-placeholder {
+    font-size: 60px;
+    line-height: 1;
+    user-select: none;
+  }
+  .avatar-badge {
+    position: absolute;
+    bottom: 4px; right: 4px;
+    background: white;
+    border-radius: 50%;
+    width: 34px; height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border: 2px solid var(--pink-mid);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    animation: bounce 1.5s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  .name {
+    font-family: 'Pacifico', cursive;
+    font-size: 32px;
+    color: var(--pink-dark);
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+  }
+  .tagline {
+    font-size: 14px;
+    color: var(--pink-main);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .bio {
+    font-size: 15px;
+    color: #888;
+    line-height: 1.7;
+    max-width: 360px;
+    margin: 0 auto 20px;
+  }
+
+  /* Mood pills */
+  .moods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 8px;
+  }
+  .mood-pill {
+    background: var(--pink-light);
+    color: var(--pink-deep);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 700;
+    border: 1.5px solid var(--pink-mid);
+    cursor: default;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .mood-pill:hover {
+    transform: scale(1.08) rotate(-2deg);
+    background: var(--pink-mid);
+  }
+
+  /* Section cards */
+  .section-card {
+    background: rgba(255,255,255,0.85);
+    border-radius: 24px;
+    border: 2px solid var(--pink-mid);
+    padding: 24px;
+    margin-top: 20px;
+    box-shadow: 0 4px 20px rgba(255,133,179,0.15);
+    animation: fadeIn 0.6s ease both;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .section-card:nth-child(2) { animation-delay: 0.15s; }
+  .section-card:nth-child(3) { animation-delay: 0.3s; }
+  .section-card:nth-child(4) { animation-delay: 0.45s; }
+  .section-card:nth-child(5) { animation-delay: 0.6s; }
+
+  .section-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 18px;
+    color: var(--pink-dark);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* Photo grid */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .photo-item {
+    aspect-ratio: 1;
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--pink-light), var(--pink-mid));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    cursor: pointer;
+    border: 2px solid var(--pink-mid);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo-item:hover {
+    transform: scale(1.06) rotate(-1deg);
+    box-shadow: 0 8px 24px rgba(255,133,179,0.4);
+    z-index: 2;
+  }
+  .photo-item.big {
+    grid-column: span 2;
+    grid-row: span 2;
+    font-size: 64px;
+  }
+
+  /* Stats row */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .stat-box {
+    background: linear-gradient(135deg, var(--pink-light), #fff0f7);
+    border-radius: 16px;
+    padding: 16px 8px;
+    text-align: center;
+    border: 1.5px solid var(--pink-mid);
+    transition: transform 0.2s;
+  }
+  .stat-box:hover { transform: translateY(-4px); }
+  .stat-num {
+    font-family: 'Pacifico', cursive;
+    font-size: 26px;
+    color: var(--pink-dark);
+    display: block;
+  }
+  .stat-label {
+    font-size: 11px;
+    color: #aaa;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* Hobbies */
+  .hobby-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .hobby-item {
+    background: linear-gradient(135deg, var(--pink-light), #fff0f7);
+    border-radius: 14px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1.5px solid var(--pink-mid);
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--pink-deep);
+    cursor: default;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .hobby-item:hover {
+    transform: translateX(4px);
+    background: var(--pink-light);
+  }
+  .hobby-icon { font-size: 22px; }
+
+  /* Favorite things */
+  .fav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--cream);
+    border-radius: 12px;
+    border-left: 4px solid var(--pink-main);
+    font-size: 14px;
+    color: #666;
+    transition: transform 0.2s;
+  }
+  .fav-item:hover { transform: translateX(6px); }
+  .fav-emoji { font-size: 20px; }
+
+  /* Quote box */
+  .quote-box {
+    background: linear-gradient(135deg, var(--pink-main), var(--lilac));
+    border-radius: 20px;
+    padding: 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+    animation: fadeIn 0.6s ease 0.75s both;
+  }
+  .quote-box::before {
+    content: '"';
+    position: absolute;
+    top: -10px; left: 12px;
+    font-size: 120px;
+    font-family: 'Pacifico', cursive;
+    color: rgba(255,255,255,0.15);
+    line-height: 1;
+  }
+  .quote-text {
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    line-height: 1.6;
+    position: relative;
+    z-index: 1;
+  }
+  .quote-author {
+    font-size: 12px;
+    color: rgba(255,255,255,0.8);
+    margin-top: 8px;
+    font-style: italic;
+  }
+
+  /* Message button */
+  .btn-wrap {
+    text-align: center;
+    margin-top: 28px;
+    animation: fadeIn 0.6s ease 0.9s both;
+  }
+  .btn-main {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--pink-main), var(--pink-dark));
+    color: white;
+    padding: 14px 40px;
+    border-radius: 999px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 6px 24px rgba(255,85,163,0.35);
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .btn-main:hover {
+    transform: scale(1.07);
+    box-shadow: 0 10px 30px rgba(255,85,163,0.45);
+  }
+  .btn-main:active { transform: scale(0.97); }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    font-size: 13px;
+    color: var(--pink-main);
+    font-weight: 700;
+    animation: fadeIn 0.6s ease 1s both;
+  }
+
+  /* Cursor sparkle on hover */
+  .cursor-sparkle {
+    position: fixed;
+    pointer-events: none;
+    font-size: 16px;
+    z-index: 9999;
+    animation: sparkleOut 0.8s ease forwards;
+  }
+  @keyframes sparkleOut {
+    0% { transform: scale(0) translateY(0); opacity: 1; }
+    100% { transform: scale(1.5) translateY(-30px); opacity: 0; }
+  }
+
+  /* Wiggle animation for emojis */
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+  }
+  .wiggle { display: inline-block; animation: wiggle 1.2s ease-in-out infinite; }
+
+  /* Rainbow text */
+  @keyframes rainbow {
+    0% { color: #FF85B3; }
+    25% { color: #D8B4FE; }
+    50% { color: #A8EDCE; }
+    75% { color: #FFD700; }
+    100% { color: #FF85B3; }
+  }
+  .rainbow { animation: rainbow 3s linear infinite; }
+
+  /* Scroll indicator */
+  .scroll-hint {
+    text-align: center;
+    color: var(--pink-main);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-top: 16px;
+    opacity: 0.7;
+    animation: fadeIn 1s ease 1.2s both;
+  }
+  .arrow-bounce {
+    display: inline-block;
+    animation: bounce 1s ease-in-out infinite;
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating hearts background -->
+<div class="hearts-bg" id="heartsContainer"></div>
+
+<div class="page">
+
+  <!-- Profile Card -->
+  <div class="profile-card">
+    <div class="confetti-top" aria-hidden="true">
+      🌸 ✨ 🦋 ⭐ 🌸 ✨ 🦋
+    </div>
+
+    <div class="avatar-wrap">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+         <img src="Screenshot 2026-06-23 202022.png" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+      </div>
+      <div class="avatar-badge">🌸</div>
+    </div>
+
+    <h1 class="name">Pristuyy 🌸</h1>
+    <p class="tagline">✨ Sweet & Adorable ✨</p>
+    <p class="bio">
+      Halo semua! 👋 Aku Prista Putri - yang rumahnya ada di tengah" Hutan di salah satu desa di Sambeng
+    </p>
+
+    <div class="moods">
+      <span class="mood-pill">😑 Cuekk</span>
+      <span class="mood-pill">🧋✨ Boba Lover?</span>
+      <span class="mood-pill">🎤 🎸 🎇 Suka Konser tapi Gaoleh mama😹</span>
+      <span class="mood-pill">🐱 Cat person</span>
+      <span class="mood-pill">📸 Foto Random</span>
+    </div>
+  </div>
+
+  <div class="scroll-hint">scroll ke bawah <span class="arrow-bounce">↓</span></div>
+
+  <!-- Stats -->
+  <div class="section-card">
+    <div class="section-title">
+      <span>✨</span> Tentang Aku
+    </div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <span class="stat-num">20/21?</span>
+        <span class="stat-label">tahun</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">😑🥶</span>
+        <span class="stat-label">Cuek dinginnn</span>
+      </div>
+      <div class="stat-box">
+        <span class="stat-num">🐱</span>
+        <span class="stat-label">Cat Lovers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Photo gallery -->
+  <div class="section-card">
+    <div class="section-title">
+      <span>📸</span> Galeri Foto Random
+    </div>
+    <div class="photo-grid">
+      <div class="photo-item big" title="Foto favorit!">
+        <img src="Screenshot 2026-06-23 201902.png" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="photo-item" title="Lagi baca buku!">
+        <img src="Screenshot 2026-06-23 201947.png" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="photo-item" title="Waktu ngopi!">
+        <img src="Screenshot 2026-06-23 201938.png" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="photo-item" title="Sama kucing!">
+        <img src="Screenshot 2026-06-23 201919.png" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+      <div class="photo-item" title="Koleksi stiker!">
+       <img src="Screenshot 2026-06-23 202011.png" style="width:100%; height:100%; object-fit:cover;">
+      </div>
+    </div>
+  </div>
+
+  <!-- Hobbies -->
+  <div class="section-card">
+    <div class="section-title">
+      <span>🎀</span> Hobi & Kesukaan
+    </div>
+    <div class="hobby-grid">
+        <div class="hobby-item">
+            <span class="hobby-icon">🍜🌶️</span> Makan Seblak
+          </div>
+      <div class="hobby-item">
+        <span class="hobby-icon">🧋</span> Hunting Minuman
+      </div>
+      <div class="hobby-item">
+        <span class="hobby-icon">🎵</span> Dengar Musik
+      </div>
+      <div class="hobby-item">
+        <span class="hobby-icon">📸</span> Foto Random
+      </div>
+    </div>
+  </div>
+
+  <!-- Fav things -->
+  <div class="section-card">
+    <div class="section-title">
+      <span>💕</span> Hal Favorit
+    </div>
+    <div class="fav-list">
+      <div class="fav-item">
+        <span class="fav-emoji">🎬</span>
+        <div><strong>Film:</strong> Film Drakor</div>
+      </div>
+      <div class="fav-item">
+        <span class="fav-emoji">🎵</span>
+        <div><strong>Musik:</strong> 8 Letters - Why dont we ☁️</div>
+      </div>
+      <div class="fav-item">
+        <span class="fav-emoji">🍱</span>
+        <div><strong>Makanan:</strong> Seblak 🍜</div>
+      </div>
+      <div class="fav-item">
+        <span class="fav-emoji">🌸</span>
+        <div><strong>Tempat:</strong> Rumah🏠</div>
+      </div>
+      <div class="fav-item">
+        <span class="fav-emoji">📖</span>
+        <div><strong>Barang:</strong> Koleksi Parfum 🧴✨</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quote -->
+  <div class="quote-box">
+    <p class="quote-text">
+      "Gapakai kata kata karena yang terbaik adalah saya"
+    </p>
+    <p class="quote-author">— Pristuyyy✨</p>
+  </div>
+
+  <!-- Button -->
+  <div class="btn-wrap">
+    <button class="btn-main" onclick="sendHeart()">
+      💌 Kirim Semangat!
+    </button>
+  </div>
+
+  <div class="footer">
+    Made with 🩷 &nbsp;·&nbsp; <span class="rainbow">Stay cute, stay you!</span> &nbsp;·&nbsp; 🌸✨🎀
+  </div>
+
+</div>
+
+<script>
+  // Create floating hearts background
+  const heartsContainer = document.getElementById('heartsContainer');
+  const heartChars = ['🌸','💕','✨','🎀','⭐','💫','🌟','💗','🌷','🦋'];
+
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart-float';
+    heart.textContent = heartChars[Math.floor(Math.random() * heartChars.length)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (12 + Math.random() * 16) + 'px';
+    const duration = 6 + Math.random() * 8;
+    heart.style.animationDuration = duration + 's';
+    heart.style.animationDelay = Math.random() * 4 + 's';
+    heartsContainer.appendChild(heart);
+    setTimeout(() => heart.remove(), (duration + 4) * 1000);
+  }
+
+  // Start heart loop
+  for (let i = 0; i < 15; i++) {
+    setTimeout(createHeart, i * 400);
+  }
+  setInterval(createHeart, 800);
+
+  // Cursor sparkle trail
+  const sparkles = ['✨','⭐','🌸','💕','💫'];
+  document.addEventListener('mousemove', (e) => {
+    if (Math.random() > 0.85) {
+      const el = document.createElement('div');
+      el.className = 'cursor-sparkle';
+      el.textContent = sparkles[Math.floor(Math.random() * sparkles.length)];
+      el.style.left = e.clientX + 'px';
+      el.style.top = e.clientY + 'px';
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 800);
+    }
+  });
+
+  // Send heart button
+  function sendHeart() {
+    const emojis = ['🌸','💕','✨','🎉','💗','⭐','🦋','🌟'];
+    for (let i = 0; i < 20; i++) {
+      setTimeout(() => {
+        const el = document.createElement('div');
+        el.style.cssText = `
+          position: fixed;
+          left: ${30 + Math.random() * 40}vw;
+          top: 80vh;
+          font-size: ${16 + Math.random() * 20}px;
+          pointer-events: none;
+          z-index: 9999;
+          animation: floatUp 2s ease forwards;
+          opacity: 0;
+        `;
+        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        document.body.appendChild(el);
+        setTimeout(() => el.remove(), 2200);
+      }, i * 100);
+    }
+    // Button shake
+    const btn = document.querySelector('.btn-main');
+    btn.style.transform = 'scale(0.95)';
+    setTimeout(() => btn.style.transform = '', 150);
+  }
+</script>
+</body>
+</html>
